@@ -20,6 +20,7 @@ public class JdbcDemo {
 		
 		//Circle circle = dao.getCircle(1);
 		//System.out.println(circle.getName());
+		// *************************************
 		System.out.println("Number of circles = "+dao.getCircleCounts());
 		System.out.println("Name of circle = "+dao.getCircleName(1));
 		System.out.println("Name of circle from the object = "+dao.getCircleforId(1).getName());
