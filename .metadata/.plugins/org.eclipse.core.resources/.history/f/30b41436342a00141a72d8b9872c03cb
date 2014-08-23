@@ -1,0 +1,14 @@
+package org.sayantan.javabrains.dao;
+
+import java.sql.Connection;
+
+import org.sayantan.javabrains.model.Circle;
+
+public class JdbcDaoImpl {
+	public Circle getCircle(int circleId){
+		Connection conn = null;
+		String driver = "org.apache.derby.jdbc.ClientDriver";
+		Class.forName(driver).newInstance();
+		return null;
+	}
+}

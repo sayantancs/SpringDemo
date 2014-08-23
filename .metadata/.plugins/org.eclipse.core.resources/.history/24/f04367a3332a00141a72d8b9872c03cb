@@ -1,0 +1,12 @@
+package org.sayantan.javabrains;
+
+import org.sayantan.javabrains.dao.JdbcDaoImpl;
+
+public class JdbcDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Circle circle = new JdbcDaoImpl()
+	}
+
+}

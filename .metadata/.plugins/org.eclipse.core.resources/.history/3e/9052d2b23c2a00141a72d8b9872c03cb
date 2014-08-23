@@ -1,0 +1,16 @@
+package org.sayantan.javabrains;
+
+import java.sql.SQLException;
+
+import org.sayantan.javabrains.dao.JdbcDaoImpl;
+import org.sayantan.javabrains.model.Circle;
+
+public class JdbcDemo {
+
+	public static void main(String[] args) throws IllegalAccessException, InstantiationException, ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		// Circle circle = new JdbcDaoImpl().getCircle(1); -- non spring way
+		System.out.print(circle.getName());
+	}
+
+}

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--DOCTYPE beans PUBLIC ".//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd"-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+	<bean id="trianglePrimitive0" class="org.sayantan.javabrains.TrianglePrimitive0">
+		<!-- This below line is when setter-getter is used,  this is setter injection -->
+		<!-- <property name="type" value="Equilateral" />  -->
+		
+		<!-- This below line is when constructor is used --> 
+		<!-- <constructor-arg value = "Equilateral" /> -->
+		<constructor-arg type="int" value = "20" />
+		<constructor-arg type="java.lang.String" value="Obtuse" />
+		
+		<!-- also, we can configure it w.r.to order of arguments -->
+		<!-- constructor-arg index="0" value="Equilateral" -->
+	</bean>
+	<!-- normal case, initalization and dispose can be done by Spring interfaces-->
+	<bean id = "triangle" class="org.sayantan.javabrains.Triangle" >  
+	
+	<!-- init,dispose called and done manually -->
+	<!-- <bean id = "triangle" class="org.sayantan.javabrains.Triangle"  init-method="myInit" destroy-method="myClean">  -->	
+		
+		<!-- 3 different property tag for 3 points--> 
+<!-- 		<property name="pointA" ref="pointA"></property>
+		<property name="pointB" ref="point2"></property>
+		<property name="pointC" ref="point3"></property>  -->
+		
+		<!-- One property tag only when using list -->
+		<!-- <property name="points">
+			<list>
+				<ref bean = "zeropoint" />
+				<ref bean = "point2" />
+				<ref bean = "point3" />
+			</list>
+		</property> -->	
+	</bean>
+	<alias name="triangle" alias="triangle-alias"/>
+
+	<!-- creating point object -->
+	<bean id="center" class = "org.sayantan.javabrains.Point">
+		<qualifier value="circleRelated"></qualifier>
+		<property name="x" value="${pointA.pointX}"></property>
+		<property name="y" value ="${pointA.pointY}"></property>
+	</bean>
+	<bean id="point2" class = "org.sayantan.javabrains.Point">
+		<property name="x" value="20"></property>
+		<property name="y" value = "0"></property>
+	</bean>
+	<bean id="point3" class = "org.sayantan.javabrains.Point">
+		<property name="x" value="-20"></property>
+		<property name="y" value = "0"></property>
+	</bean>
+	
+	<bean id="circle" class= "org.sayantan.javabrains.Circle">
+		<!-- <property name="center" ref="pointA"></property> --> 
+	</bean>
+	
+	<!-- <context:anontation-config/> -->
+	<!-- <context:component-scan /> -->
+		
+	<!-- <bean class="org.sayantan.javabrains.DisplayNameBeanPostProcessor" ></bean>  -->
+	<!-- <bean class="org.sayantan.javabrains.MyBeanFactoryPP" ></bean> -->	
+	
+	<!-- The following is a spring provided bean-factory -post processor, used to incorporate the properties file -->
+	<bean class = "org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+			<property name="locations" value="pointConfig.properties"></property>
+	</bean>
+	
+	<!-- annotation (@Require) specific bpp, checks compile time if required property-setter is there or not -->
+	<!-- 	<bean class = "org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"></bean> -->
+	
+	<!-- annotation (@Autowired) specific BPP -->
+	<!-- @Autowire first checks by type and if there are more of same type then checks by Name, if matches with variable name in class -->
+	<bean class = "org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"></bean>
+</beans>
+
+

@@ -1,0 +1,7 @@
+package org.sayantan.javabrains.dao;
+
+import org.springframework.jdbc.core.simple.SimpleJdbcDaoSupport;
+
+public class SimpleJdbcDaoImpl extends SimpleJdbcDaoSupport {
+
+}

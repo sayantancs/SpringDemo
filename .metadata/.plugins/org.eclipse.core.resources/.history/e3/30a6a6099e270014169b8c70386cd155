@@ -1,0 +1,18 @@
+package org.sayantan.javabrains.aspect;
+
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+
+@Aspect
+public class LoggingAspect {
+	// The following executes advice before all getNames, irrespective of the object which calls it
+	// @Before("execution(public String getName())")
+	
+	// In this case, advice is restricted to only circle's getname.
+	//@Before("execution(public String org.sayantan.javabrains.model.Circle.getName())")
+	
+	@Before("execution(public String get*())")
+	public void loggingAdvice(){
+		System.out.println("Advice run, Get method called");
+	}
+}

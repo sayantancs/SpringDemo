@@ -1,0 +1,10 @@
+package org.sayantan.javabrains.dao;
+
+import org.sayantan.javabrains.model.Circle;
+
+public class JdbcDaoImpl {
+	public Circle getCircle(int circleId){
+		Connection conn = null;
+		return null;
+	}
+}

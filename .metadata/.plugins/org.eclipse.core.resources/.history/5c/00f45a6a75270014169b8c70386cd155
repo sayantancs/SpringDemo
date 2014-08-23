@@ -1,0 +1,3 @@
+greeting=Hello!
+drawing.circle=Drawing Circle!
+drawing.point=Center-Point is " + center.getX()+"," + center.getY()
